@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Grand Horizon | Luxury Resort, Spa & Private Villas</title>
+  <meta name="description" content="Experience 5-star Mediterranean luxury at The Grand Horizon Resort & Spa. Michelin-starred dining, cliffside infinity pools, private villas, and royal butler service in Ravello, Amalfi Coast.">
+  <meta name="keywords" content="luxury hotel, 5-star resort, Amalfi Coast hotel, private villas, Michelin dining, spa resort, luxury suites, Ravello">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23d4af37'><path d='M2 19h20v2H2v-2zM2 5l5 3.5L12 3l5 5.5L22 5v12H2V5z'/></svg>">
+
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/particles.css">
+</head>
+<body>
+
+  <!-- ========================================================================
+       Top Utility Bar
+       ======================================================================== -->
+  <div class="top-bar">
+    <div class="container top-bar-content">
+      <div class="top-bar-left">
+        <span class="top-bar-item">
+          <i class="fa-solid fa-award"></i>
+          <span>Forbes Travel Guide 5-Star Winner 2026</span>
+        </span>
+        <span class="top-bar-item">
+          <i class="fa-solid fa-location-dot"></i>
+          <span>Ravello, Amalfi Coast, Italy</span>
+        </span>
+      </div>
+      <div class="top-bar-right">
+        <a href="tel:+390899728800" class="top-bar-item">
+          <i class="fa-solid fa-phone"></i>
+          <span>+39 089 972 8800</span>
+        </a>
+        <div class="currency-select-wrap">
+          <i class="fa-solid fa-globe" style="color: var(--gold-primary);"></i>
+          <select id="currencySelect" class="currency-select" aria-label="Select Currency">
+            <option value="USD" selected>USD ($)</option>
+            <option value="EUR">EUR (€)</option>
+            <option value="GBP">GBP (£)</option>
+            <option value="INR">INR (₹)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       Main Sticky Header & Navigation
+       ======================================================================== -->
+  <header class="main-header">
+    <div class="container navbar-container">
+      <a href="#hero" class="brand-logo">
+        <div class="brand-crest">
+          <i class="fa-solid fa-crown"></i>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">THE GRAND HORIZON</span>
+          <span class="brand-subtitle">RESORT &bull; SPA &bull; SANCTUARY</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#about" class="nav-link">Heritage</a></li>
+          <li><a href="#rooms" class="nav-link">Accommodations</a></li>
+          <li><a href="#amenities" class="nav-link">Experiences</a></li>
+          <li><a href="#dining" class="nav-link">Gastronomy</a></li>
+          <li><a href="#spa" class="nav-link">Wellness</a></li>
+          <li><a href="#offers" class="nav-link">Packages</a></li>
+          <li><a href="#gallery" class="nav-link">Gallery</a></li>
+          <li><a href="#location" class="nav-link">Location</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="login.html" style="display:inline-flex;align-items:center;gap:7px;padding:8px 16px;background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.35);border-radius:6px;color:#d4af37;font-size:0.8rem;font-weight:600;letter-spacing:0.05em;text-decoration:none;transition:all 0.3s ease;" onmouseover="this.style.background='rgba(212,175,55,0.2)'" onmouseout="this.style.background='rgba(212,175,55,0.1)'">
+          <i class="fa-solid fa-user-circle"></i>
+          <span>Member Login</span>
+        </a>
+        <button class="btn btn-primary btn-sm" onclick="BookingEngine.openModal()">
+          <i class="fa-solid fa-calendar-check"></i>
+          <span>Reserve Now</span>
+        </button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       Hero Section
+       ======================================================================== -->
+  <section class="hero-section" id="hero">
+    <div class="hero-bg-media">
+      <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=2000&q=85" alt="The Grand Horizon Cliffside Infinity Pool at Sunset">
+    </div>
+    <div class="hero-overlay"></div>
+
+    <div class="container hero-content">
+      <div class="hero-badge-pill">
+        <i class="fa-solid fa-gem"></i>
+        <span>Ultra-Luxury Mediterranean Sanctuary</span>
+      </div>
+
+      <h1 class="hero-title">
+        Where Timeless Elegance<br>
+        <span class="gold-gradient-text">Meets Coastal Splendor</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Perched high above the azure Tyrrhenian waters of the Amalfi Coast. An immortal haven of three Michelin-starred dining, Roman thermal hydrotherapy, and secluded private villa sanctuaries.
+      </p>
+
+      <div class="hero-cta-group">
+        <button class="btn btn-primary btn-lg" onclick="BookingEngine.openModal()">
+          <i class="fa-solid fa-calendar-days"></i> Reserve Your Stay
+        </button>
+        <a href="#rooms" class="btn btn-outline-white btn-lg">
+          <i class="fa-solid fa-compass"></i> Explore Sanctuaries
+        </a>
+      </div>
+
+      <div class="hero-highlights-strip">
+        <div class="highlight-item">
+          <i class="fa-solid fa-star"></i>
+          <span>Forbes 5-Star Rated</span>
+        </div>
+        <div class="highlight-item">
+          <i class="fa-solid fa-utensils"></i>
+          <span>3 Michelin Star Gastronomy</span>
+        </div>
+        <div class="highlight-item">
+          <i class="fa-solid fa-ship"></i>
+          <span>Private Yacht Charters</span>
+        </div>
+        <div class="highlight-item">
+          <i class="fa-solid fa-bell-concierge"></i>
+          <span>24/7 Royal Butler Concierge</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       Floating Quick Reservation Engine Bar
+       ======================================================================== -->
+  <div class="container reservation-bar-wrapper">
+    <div class="reservation-bar">
+      <form id="quickBookingForm" class="booking-form-grid">
+        <!-- Check In -->
+        <div class="booking-input-group">
+          <label class="booking-label" for="barCheckIn">
+            <i class="fa-regular fa-calendar"></i> Check-In
+          </label>
+          <div class="booking-input-wrap">
+            <input type="date" id="barCheckIn" class="booking-input booking-checkin-input" required>
+          </div>
+        </div>
+
+        <!-- Check Out -->
+        <div class="booking-input-group">
+          <label class="booking-label" for="barCheckOut">
+            <i class="fa-regular fa-calendar-check"></i> Check-Out
+          </label>
+          <div class="booking-input-wrap">
+            <input type="date" id="barCheckOut" class="booking-input booking-checkout-input" required>
+          </div>
+        </div>
+
+        <!-- Guests -->
+        <div class="booking-input-group">
+          <label class="booking-label" for="barGuests">
+            <i class="fa-solid fa-users"></i> Guests
+          </label>
+          <div class="booking-input-wrap">
+            <select id="barGuests" class="booking-input">
+              <option value="1">1 Guest</option>
+              <option value="2" selected>2 Guests</option>
+              <option value="3">3 Guests</option>
+              <option value="4">4 Guests</option>
+              <option value="6">6+ Guests (Villa)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Room Type -->
+        <div class="booking-input-group">
+          <label class="booking-label" for="barRoomType">
+            <i class="fa-solid fa-bed"></i> Accommodation
+          </label>
+          <div class="booking-input-wrap">
+            <select id="barRoomType" class="booking-input">
+              <option value="any">Any Room or Suite</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Promo Code -->
+        <div class="booking-input-group">
+          <label class="booking-label" for="barPromo">
+            <i class="fa-solid fa-tag"></i> Promo / VIP Code
+          </label>
+          <div class="booking-input-wrap">
+            <input type="text" id="barPromo" class="booking-input" placeholder="e.g. LOVEHORIZON">
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary" style="height: 48px;">
+          <i class="fa-solid fa-magnifying-glass"></i> Check Rates
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       Heritage & Story Section
+       ======================================================================== -->
+  <section class="section-padding" id="about">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+        <div>
+          <span class="section-tagline">The Heritage & Legend</span>
+          <h2 class="section-title" style="text-align: left;">
+            An Italian Sanctuary Carved Into Living Cliffside
+          </h2>
+          <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 20px;">
+            Dating back to the 18th century as the coastal retreat of Neapolitan nobility, <strong style="color: #fff;">The Grand Horizon</strong> has been meticulously restored into a modern architectural masterpiece.
+          </p>
+          <p style="font-size: 0.95rem; line-height: 1.8; margin-bottom: 30px; color: var(--text-muted);">
+            Each hand-quarried travertine stone, ancient olive garden, and soaring glass terrace was curated to honor the timeless poetry of the Amalfi Coast while cocooning discerning travelers in contemporary ultra-luxury, intuitive privacy, and bespoke butler pampering.
+          </p>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px;">
+            <div style="border-left: 2px solid var(--gold-primary); padding-left: 16px;">
+              <div style="font-family: var(--font-serif); font-size: 2.2rem; font-weight: 700; color: #fff;">350m</div>
+              <div style="font-size: 0.82rem; color: var(--text-muted); text-transform: uppercase;">Elevation Above Sea Level</div>
+            </div>
+            <div style="border-left: 2px solid var(--gold-primary); padding-left: 16px;">
+              <div style="font-family: var(--font-serif); font-size: 2.2rem; font-weight: 700; color: #fff;">1800+</div>
+              <div style="font-size: 0.82rem; color: var(--text-muted); text-transform: uppercase;">Rare Cellar Vintages</div>
+            </div>
+          </div>
+          <button class="btn btn-outline-gold" onclick="BookingEngine.openModal()">
+            <i class="fa-solid fa-bell-concierge"></i> Begin Your Journey
+          </button>
+        </div>
+
+        <div style="position: relative;">
+          <div style="border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-subtle); box-shadow: var(--shadow-lg);">
+            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1000&q=80" alt="Resort Architecture and Terraces">
+          </div>
+          <div style="position: absolute; bottom: -20px; left: -20px; background: rgba(9, 13, 20, 0.95); border: 1px solid var(--gold-primary); border-radius: var(--radius-md); padding: 20px 24px; backdrop-filter: blur(12px); max-width: 280px; box-shadow: var(--shadow-md);">
+            <i class="fa-solid fa-quote-left" style="color: var(--gold-primary); font-size: 1.4rem; margin-bottom: 8px;"></i>
+            <p style="font-size: 0.85rem; color: #cbd5e1; font-style: italic; line-height: 1.6;">
+              "The most breathtaking hotel panorama on earth."
+            </p>
+            <div style="margin-top: 8px; font-size: 0.76rem; color: var(--gold-light); font-weight: 600;">
+              &mdash; Architectural Digest
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       Accommodations & Suites Section
+       ======================================================================== -->
+  <section class="section-padding" id="rooms" style="background: var(--bg-primary);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tagline">Bespoke Living Spaces</span>
+        <h2 class="section-title">Suites, Penthouses & Private Villas</h2>
+        <p class="section-desc">
+          Every sanctuary is an intimate haven framed by floor-to-ceiling vistas of the azure Mediterranean, handcrafted Italian furnishings, and dedicated butler service.
+        </p>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="room-filter-nav">
+        <button class="filter-btn active" data-category="all">All Sanctuaries</button>
+        <button class="filter-btn" data-category="deluxe">Deluxe Rooms</button>
+        <button class="filter-btn" data-category="suite">Luxury Suites</button>
+        <button class="filter-btn" data-category="penthouse">Penthouses</button>
+        <button class="filter-btn" data-category="villa">Private Villas</button>
+      </div>
+
+      <!-- Rooms Grid (Dynamically Populated) -->
+      <div class="rooms-grid" id="roomsGrid"></div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       World-Class Amenities & Experiences Section
+       ======================================================================== -->
+  <section class="section-padding amenities-section" id="amenities">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tagline">Unrivaled Hospitality</span>
+        <h2 class="section-title">The Grand Horizon Experience</h2>
+        <p class="section-desc">
+          From sunrise yoga suspended above the waves to private yacht excursions along the Amalfi coastline, every moment is curated for effortless indulgence.
+        </p>
+      </div>
+
+      <!-- Amenities Grid (Dynamically Populated) -->
+      <div class="amenities-grid" id="amenitiesGrid"></div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       Culinary & Gastronomy Section
+       ======================================================================== -->
+  <section class="section-padding" id="dining" style="background: var(--bg-dark);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tagline">Michelin-Starred Epicurean Journeys</span>
+        <h2 class="section-title">Culinary Artistry by the Sea</h2>
+        <p class="section-desc">
+          Led by world-renowned executive chefs, our three signature restaurants celebrate the purest Mediterranean harvests, wood-fired grilling, and master cocktail mixology.
+        </p>
+      </div>
+
+      <!-- Dining Cards (Dynamically Populated) -->
+      <div class="dining-featured-grid" id="diningFeaturedContainer"></div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       Wellness & Imperial Roman Spa Section
+       ======================================================================== -->
+  <section class="section-padding spa-section" id="spa">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tagline">Restorative Sanctuary</span>
+        <h2 class="section-title">The Imperial Thermal Spa</h2>
+        <p class="section-desc">
+          Immerse yourself in our 2,000 m² temple of wellbeing. Ancient Roman hydrothermal baths, cold plunge grottos, and therapeutic rituals infused with 24K gold and marine collagen.
+        </p>
+      </div>
+
+      <!-- Spa Treatments Grid (Dynamically Populated) -->
+      <div class="spa-grid" id="spaTreatmentsGrid"></div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       Special Offers & Seasonal Packages
+       ======================================================================== -->
+  <section class="section-padding" id="offers" style="background: var(--bg-primary);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tagline">Curated Escapes</span>
+        <h2 class="section-title">Exclusive Packages & Offers</h2>
+        <p class="section-desc">
+          Enhance your stay with our bespoke seasonal packages featuring complimentary nights, Michelin tasting degustations, and private yacht sunset cruises.
+        </p>
+      </div>
+
+      <!-- Offers Grid (Dynamically Populated) -->
+      <div class="offers-grid" id="offersGrid"></div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       Visual Gallery & Virtual Tour
+       ======================================================================== -->
+  <section class="section-padding" id="gallery" style="background: var(--bg-dark);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tagline">Visual Journey</span>
+        <h2 class="section-title">Life at The Grand Horizon</h2>
+        <p class="section-desc">
+          Click any frame to immerse yourself in our high-definition panoramic photography gallery.
+        </p>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item span-2" onclick="HotelUI.openLightbox(0)">
+          <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80" alt="Resort Infinity Pool" loading="lazy">
+          <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+        </div>
+        <div class="gallery-item" onclick="HotelUI.openLightbox(1)">
+          <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80" alt="Deluxe Ocean Suite" loading="lazy">
+          <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+        </div>
+        <div class="gallery-item" onclick="HotelUI.openLightbox(2)">
+          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" alt="L'Éclat Restaurant" loading="lazy">
+          <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+        </div>
+        <div class="gallery-item col-2" onclick="HotelUI.openLightbox(3)">
+          <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1200&q=80" alt="Executive Living Suite" loading="lazy">
+          <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+        </div>
+        <div class="gallery-item" onclick="HotelUI.openLightbox(4)">
+          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" alt="Charred Grill Feast" loading="lazy">
+          <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+        </div>
+        <div class="gallery-item" onclick="HotelUI.openLightbox(5)">
+          <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=80" alt="Overwater Bungalow" loading="lazy">
+          <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       Guest Reviews & Statistics Counter
+       ======================================================================== -->
+  <section class="section-padding reviews-section" id="reviews">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tagline">Guest Testimonials</span>
+        <h2 class="section-title">Cherished by Travelers Worldwide</h2>
+        <p class="section-desc">
+          Read candid reflections from leaders, artists, and discerning travelers who call The Grand Horizon their Italian home.
+        </p>
+      </div>
+
+      <!-- Stats Strip -->
+      <div class="stats-counter-strip">
+        <div class="stat-item">
+          <div class="stat-num">4.98</div>
+          <div class="stat-label">Guest Rating Score</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">98.6%</div>
+          <div class="stat-label">Recommendation Rate</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">15k+</div>
+          <div class="stat-label">Distinguished Guests</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">24 / 7</div>
+          <div class="stat-label">Bespoke Butler Service</div>
+        </div>
+      </div>
+
+      <!-- Reviews Grid (Dynamically Populated) -->
+      <div class="reviews-grid" id="reviewsGrid"></div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       Location & Surrounding Highlights
+       ======================================================================== -->
+  <section class="section-padding" id="location" style="background: var(--bg-dark);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tagline">Prime Coastal Setting</span>
+        <h2 class="section-title">In the Heart of the Amalfi Coast</h2>
+        <p class="section-desc">
+          Perched gracefully on the dramatic cliffs of Ravello with seamless VIP access to Capri, Positano, and Naples.
+        </p>
+      </div>
+
+      <div class="location-grid">
+        <div class="location-map-wrap">
+          <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1000&q=80" alt="Scenic Amalfi Coastline Map View">
+          <div class="map-floating-card">
+            <div>
+              <div style="font-weight: 700; color: var(--gold-light); font-size: 0.95rem;">
+                <i class="fa-solid fa-location-dot" style="color: var(--gold-primary);"></i> The Grand Horizon Resort
+              </div>
+              <div class="map-address-text">Strada Panoramica 108, Ravello, Italy</div>
+            </div>
+            <a href="https://maps.google.com" target="_blank" rel="noopener" class="btn btn-outline-gold btn-sm">
+              <i class="fa-solid fa-diamond-turn-right"></i> Directions
+            </a>
+          </div>
+        </div>
+
+        <div class="location-highlights-list">
+          <div class="dist-card">
+            <div class="dist-info">
+              <i class="fa-solid fa-plane-departure"></i>
+              <div>
+                <strong style="color: #fff;">Naples International Airport (NAP)</strong>
+                <div style="font-size: 0.78rem; color: var(--text-muted);">Direct chauffeured Mercedes Maybach transfer</div>
+              </div>
+            </div>
+            <span class="dist-val">55 Mins</span>
+          </div>
+
+          <div class="dist-card">
+            <div class="dist-info">
+              <i class="fa-solid fa-helicopter"></i>
+              <div>
+                <strong style="color: #fff;">Private Resort Helipad</strong>
+                <div style="font-size: 0.78rem; color: var(--text-muted);">Scenic flight directly from Rome or Naples hubs</div>
+              </div>
+            </div>
+            <span class="dist-val">15 Mins</span>
+          </div>
+
+          <div class="dist-card">
+            <div class="dist-info">
+              <i class="fa-solid fa-ship"></i>
+              <div>
+                <strong style="color: #fff;">Isle of Capri & Blue Grotto</strong>
+                <div style="font-size: 0.78rem; color: var(--text-muted);">Direct charter from private resort yacht marina</div>
+              </div>
+            </div>
+            <span class="dist-val">30 Mins</span>
+          </div>
+
+          <div class="dist-card">
+            <div class="dist-info">
+              <i class="fa-solid fa-landmark"></i>
+              <div>
+                <strong style="color: #fff;">Historic Ravello Piazza & Villa Rufolo</strong>
+                <div style="font-size: 0.78rem; color: var(--text-muted);">World-renowned classical music festival gardens</div>
+              </div>
+            </div>
+            <span class="dist-val">8 Mins</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       Frequently Asked Questions Accordion
+       ======================================================================== -->
+  <section class="section-padding" id="faq" style="background: var(--bg-primary);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tagline">Essential Information</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-desc">
+          Everything you need to plan your seamless stay at The Grand Horizon.
+        </p>
+      </div>
+
+      <!-- FAQ Container (Dynamically Populated) -->
+      <div class="faq-container" id="faqContainer"></div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       VIP Circle Newsletter & Special Discount
+       ======================================================================== -->
+  <section class="section-padding newsletter-section" id="newsletter">
+    <div class="container">
+      <div class="newsletter-box">
+        <span class="section-tagline">Exclusive Invitations</span>
+        <h2 class="section-title">Join The Horizon Circle</h2>
+        <p class="section-desc">
+          Receive private invitations to seasonal tasting menus, wine masterclasses, and an immediate <strong style="color: var(--gold-light);">10% discount voucher</strong> for your inaugural stay.
+        </p>
+        <form id="newsletterForm" class="newsletter-form">
+          <input type="email" id="newsletterEmail" class="newsletter-input" placeholder="Enter your preferred email address..." required>
+          <button type="submit" class="btn btn-primary">
+            <i class="fa-solid fa-envelope"></i> Receive VIP Access
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       Contact & Concierge Inquiry
+       ======================================================================== -->
+  <section class="section-padding" id="contact" style="background: var(--bg-dark);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tagline">At Your Service</span>
+        <h2 class="section-title">Contact Our Royal Concierge</h2>
+        <p class="section-desc">
+          Whether organizing private helicopter charters, customized wedding galas, or bespoke villa reservations, our team is at your command.
+        </p>
+      </div>
+
+      <div style="max-width: 760px; margin: 0 auto; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 40px; box-shadow: var(--shadow-lg);">
+        <form id="contactForm" style="display: flex; flex-direction: column; gap: 20px;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="booking-input-group">
+              <label class="booking-label" for="contactName">Your Full Name</label>
+              <div class="booking-input-wrap">
+                <input type="text" id="contactName" class="booking-input" placeholder="Lord / Lady Sterling" required>
+              </div>
+            </div>
+            <div class="booking-input-group">
+              <label class="booking-label" for="contactEmail">Email Address</label>
+              <div class="booking-input-wrap">
+                <input type="email" id="contactEmail" class="booking-input" placeholder="guest@luxury.com" required>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="booking-input-group">
+              <label class="booking-label" for="contactPhone">Phone Number</label>
+              <div class="booking-input-wrap">
+                <input type="tel" id="contactPhone" class="booking-input" placeholder="+1 (555) 019-2834">
+              </div>
+            </div>
+            <div class="booking-input-group">
+              <label class="booking-label" for="contactSubject">Inquiry Department</label>
+              <div class="booking-input-wrap">
+                <select id="contactSubject" class="booking-input">
+                  <option>Suite & Villa Reservations</option>
+                  <option>Private Helicopter & Yacht Charters</option>
+                  <option>Weddings & Bespoke Galas</option>
+                  <option>Corporate Retreats & Buyouts</option>
+                  <option>Imperial Spa Treatments</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="booking-input-group">
+            <label class="booking-label" for="contactMessage">Your Message & Requests</label>
+            <div class="booking-input-wrap" style="align-items: flex-start; height: 120px;">
+              <textarea id="contactMessage" class="booking-input" style="height: 100%; resize: none;" placeholder="Tell us about your desired stay or customized arrangements..." required></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg" style="margin-top: 10px;">
+            <i class="fa-solid fa-paper-plane"></i> Transmit Request to Head Concierge
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       Footer
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <!-- Col 1: Brand -->
+        <div class="footer-col-brand">
+          <div class="brand-logo">
+            <div class="brand-crest"><i class="fa-solid fa-crown"></i></div>
+            <div class="brand-text">
+              <span class="brand-title">THE GRAND HORIZON</span>
+              <span class="brand-subtitle">RESORT &bull; SPA &bull; SANCTUARY</span>
+            </div>
+          </div>
+          <p class="footer-brand-desc">
+            A sanctuary where Italian heritage meets contemporary coastal luxury. Member of The Leading Hotels of the World.
+          </p>
+          <div class="footer-social-links">
+            <a href="#" class="social-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-btn" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-btn" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" class="social-btn" aria-label="TripAdvisor"><i class="fa-brands fa-tripadvisor"></i></a>
+          </div>
+        </div>
+
+        <!-- Col 2: Navigation -->
+        <div>
+          <h4 class="footer-col-title">Sanctuaries</h4>
+          <ul class="footer-links-list">
+            <li><a href="#rooms">Deluxe Ocean Rooms</a></li>
+            <li><a href="#rooms">The Azure Executive Suite</a></li>
+            <li><a href="#rooms">Presidential Horizon Penthouse</a></li>
+            <li><a href="#rooms">Cliffside Sanctuary Villa</a></li>
+            <li><a href="#rooms">Lagoon Overwater Bungalow</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Experiences -->
+        <div>
+          <h4 class="footer-col-title">Experiences</h4>
+          <ul class="footer-links-list">
+            <li><a href="#dining">L'Éclat Restaurant (3★)</a></li>
+            <li><a href="#dining">Saffron & Ember Grill</a></li>
+            <li><a href="#spa">Imperial Thermal Spa</a></li>
+            <li><a href="#amenities">Private Yacht Charters</a></li>
+            <li><a href="#offers">Honeymoon Packages</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Contact Info -->
+        <div>
+          <h4 class="footer-col-title">Head Concierge</h4>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Strada Panoramica 108, 84010 Ravello, Amalfi Coast, Italy</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-phone"></i>
+            <span>+39 089 972 8800</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-envelope"></i>
+            <span>concierge@grandhorizonresort.com</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-clock"></i>
+            <span>Check-in: 15:00 &bull; Check-out: 12:00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 The Grand Horizon Luxury Resort & Spa. All rights reserved.
+        </div>
+        <div style="display: flex; gap: 20px;">
+          <a href="#" style="color: var(--text-dim);">Privacy Policy</a>
+          <a href="#" style="color: var(--text-dim);">Terms of Service</a>
+          <a href="#" style="color: var(--text-dim);">Sustainability Pledge</a>
+          <a href="#" style="color: var(--text-dim);">Accessibility Statement</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       Modal 1: Multi-Step Interactive Booking Engine Wizard
+       ======================================================================== -->
+  <div class="modal-backdrop" id="bookingModalBackdrop">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">
+          <i class="fa-solid fa-crown" style="color: var(--gold-primary); margin-right: 8px;"></i>
+          Reserve Your Luxury Sanctuary
+        </h3>
+        <button class="modal-close-btn" onclick="BookingEngine.closeModal()" aria-label="Close modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Step Indicators -->
+        <div class="booking-wizard-steps">
+          <div class="step-indicator active" id="stepIndicator1">
+            <div class="step-circle">1</div>
+            <span class="step-label">Stay & Add-Ons</span>
+          </div>
+          <div class="step-indicator" id="stepIndicator2">
+            <div class="step-circle">2</div>
+            <span class="step-label">Guest Details</span>
+          </div>
+          <div class="step-indicator" id="stepIndicator3">
+            <div class="step-circle">3</div>
+            <span class="step-label">Payment</span>
+          </div>
+          <div class="step-indicator" id="stepIndicator4">
+            <div class="step-circle"><i class="fa-solid fa-check"></i></div>
+            <span class="step-label">Confirmation</span>
+          </div>
+        </div>
+
+        <!-- Panel 1: Room, Dates, Guests & Add-Ons -->
+        <div class="wizard-panel active" id="wizardPanel1">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+            <div class="booking-input-group">
+              <label class="booking-label" for="modalCheckIn">Check-In Date</label>
+              <div class="booking-input-wrap">
+                <input type="date" id="modalCheckIn" class="booking-input booking-checkin-input" required>
+              </div>
+            </div>
+            <div class="booking-input-group">
+              <label class="booking-label" for="modalCheckOut">Check-Out Date</label>
+              <div class="booking-input-wrap">
+                <input type="date" id="modalCheckOut" class="booking-input booking-checkout-input" required>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 16px; margin-bottom: 20px;">
+            <div class="booking-input-group">
+              <label class="booking-label" for="modalRoomSelect">Select Sanctuary Suite / Villa</label>
+              <div class="booking-input-wrap">
+                <select id="modalRoomSelect" class="booking-input"></select>
+              </div>
+            </div>
+            <div class="booking-input-group">
+              <label class="booking-label" for="modalAdults">Number of Guests</label>
+              <div class="booking-input-wrap">
+                <select id="modalAdults" class="booking-input">
+                  <option value="1">1 Adult</option>
+                  <option value="2" selected>2 Adults</option>
+                  <option value="3">3 Adults</option>
+                  <option value="4">4 Adults</option>
+                  <option value="6">6 Adults</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Add-ons Selector -->
+          <div style="margin-top: 10px;">
+            <label class="booking-label">
+              <i class="fa-solid fa-wand-magic-sparkles"></i> Curate Your Bespoke Add-Ons
+            </label>
+            <div class="addons-list" id="addonsContainer"></div>
+          </div>
+
+          <!-- Promo Code Bar -->
+          <div style="display: flex; gap: 10px; margin: 16px 0;">
+            <div class="booking-input-wrap" style="flex-grow: 1;">
+              <i class="fa-solid fa-tag"></i>
+              <input type="text" id="modalPromoInput" class="booking-input" placeholder="Have a promo code? (e.g. LOVEHORIZON)">
+            </div>
+            <button type="button" class="btn btn-outline-gold" id="applyPromoBtn">Apply Code</button>
+          </div>
+
+          <!-- Live Price Summary Box -->
+          <div class="price-summary-box" id="bookingSummaryBox"></div>
+        </div>
+
+        <!-- Panel 2: Guest Details -->
+        <div class="wizard-panel" id="wizardPanel2">
+          <h4 style="font-size: 1.25rem; margin-bottom: 16px;">Primary Guest Information</h4>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+            <div class="booking-input-group">
+              <label class="booking-label" for="guestFirstName">First Name *</label>
+              <div class="booking-input-wrap">
+                <input type="text" id="guestFirstName" class="booking-input" placeholder="e.g. Alistair" required>
+              </div>
+            </div>
+            <div class="booking-input-group">
+              <label class="booking-label" for="guestLastName">Last Name *</label>
+              <div class="booking-input-wrap">
+                <input type="text" id="guestLastName" class="booking-input" placeholder="e.g. Sterling" required>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+            <div class="booking-input-group">
+              <label class="booking-label" for="guestEmail">Email Address (For Confirmation) *</label>
+              <div class="booking-input-wrap">
+                <input type="email" id="guestEmail" class="booking-input" placeholder="alistair@sterling.co.uk" required>
+              </div>
+            </div>
+            <div class="booking-input-group">
+              <label class="booking-label" for="guestPhone">Direct Mobile / WhatsApp</label>
+              <div class="booking-input-wrap">
+                <input type="tel" id="guestPhone" class="booking-input" placeholder="+44 20 7946 0912">
+              </div>
+            </div>
+          </div>
+
+          <div class="booking-input-group" style="margin-bottom: 16px;">
+            <label class="booking-label" for="guestRequests">Special Requests & Dietary Requirements</label>
+            <div class="booking-input-wrap" style="height: 90px; align-items: flex-start;">
+              <textarea id="guestRequests" class="booking-input" style="height: 100%; resize: none;" placeholder="Allergies, high-floor preference, anniversary arrangement, champagne chilling temperature..."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 3: Payment Simulation -->
+        <div class="wizard-panel" id="wizardPanel3">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+            <h4 style="font-size: 1.25rem;">Guaranteed Reservation & Payment</h4>
+            <button type="button" class="btn btn-outline-gold btn-sm" id="autofillCardBtn">
+              <i class="fa-solid fa-wand-magic-sparkles"></i> Auto-fill Demo Card
+            </button>
+          </div>
+
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;">
+            This is a simulated sandbox test environment. No real funds will be charged.
+          </p>
+
+          <div class="booking-input-group" style="margin-bottom: 14px;">
+            <label class="booking-label" for="cardHolderName">Name on Card</label>
+            <div class="booking-input-wrap">
+              <input type="text" id="cardHolderName" class="booking-input" placeholder="LORD ALISTAIR STERLING">
+            </div>
+          </div>
+
+          <div class="booking-input-group" style="margin-bottom: 14px;">
+            <label class="booking-label" for="cardNumber">Card Number</label>
+            <div class="booking-input-wrap">
+              <i class="fa-regular fa-credit-card"></i>
+              <input type="text" id="cardNumber" class="booking-input" placeholder="4532 •••• •••• 9012" maxlength="19">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px;">
+            <div class="booking-input-group">
+              <label class="booking-label" for="cardExpiry">Expiration (MM/YY)</label>
+              <div class="booking-input-wrap">
+                <input type="text" id="cardExpiry" class="booking-input" placeholder="08/29" maxlength="5">
+              </div>
+            </div>
+            <div class="booking-input-group">
+              <label class="booking-label" for="cardCvv">Security CVV</label>
+              <div class="booking-input-wrap">
+                <input type="password" id="cardCvv" class="booking-input" placeholder="•••" maxlength="4">
+              </div>
+            </div>
+          </div>
+
+          <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: var(--radius-md); padding: 12px 16px; display: flex; align-items: center; gap: 12px; font-size: 0.85rem; color: #a7f3d0;">
+            <i class="fa-solid fa-shield-halved" style="font-size: 1.2rem;"></i>
+            <span>256-bit TLS bank-level encryption. Complimentary cancellation up to 72 hours before arrival.</span>
+          </div>
+        </div>
+
+        <!-- Panel 4: Confirmation Voucher -->
+        <div class="wizard-panel" id="wizardPanel4">
+          <div id="confirmationVoucherContainer"></div>
+        </div>
+
+        <!-- Wizard Navigation Footer -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 24px; padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.08);">
+          <button type="button" class="btn btn-outline-white" id="wizardPrevBtn" style="display: none;">
+            <i class="fa-solid fa-arrow-left"></i> Back
+          </button>
+          <div style="margin-left: auto;">
+            <button type="button" class="btn btn-primary" id="wizardNextBtn">
+              Continue to Guest Details <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       Modal 2: Room & Suite Details Showcase
+       ======================================================================== -->
+  <div class="modal-backdrop" id="roomDetailsModalBackdrop">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title" id="roomDetailsModalTitle">Suite Details</h3>
+        <button class="modal-close-btn" onclick="HotelUI.closeModal('roomDetailsModalBackdrop')" aria-label="Close modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="modal-body" id="roomDetailsModalBody"></div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       Modal 3: Dining Table Reservation Modal
+       ======================================================================== -->
+  <div class="modal-backdrop" id="tableModalBackdrop">
+    <div class="modal-dialog" style="max-width: 580px;">
+      <div class="modal-header">
+        <h3 class="modal-title"><i class="fa-solid fa-utensils" style="color: var(--gold-primary); margin-right: 8px;"></i> Reserve a Dining Table</h3>
+        <button class="modal-close-btn" onclick="HotelUI.closeModal('tableModalBackdrop')"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <form id="tableReservationForm" style="display: flex; flex-direction: column; gap: 16px;">
+          <div class="booking-input-group">
+            <label class="booking-label">Dining Venue</label>
+            <div class="booking-input-wrap">
+              <select id="diningVenueSelect" class="booking-input">
+                <option value="L'Éclat Restaurant">L'Éclat Restaurant (3 Michelin Stars)</option>
+                <option value="Saffron & Ember">Saffron & Ember (Artisan Grill)</option>
+                <option value="The Mirage Sunset Lounge">The Mirage Sunset Lounge & Bar</option>
+              </select>
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div class="booking-input-group">
+              <label class="booking-label">Date</label>
+              <div class="booking-input-wrap">
+                <input type="date" id="diningDate" class="booking-input" required>
+              </div>
+            </div>
+            <div class="booking-input-group">
+              <label class="booking-label">Seating Time</label>
+              <div class="booking-input-wrap">
+                <select id="diningTime" class="booking-input">
+                  <option>18:30</option>
+                  <option>19:00</option>
+                  <option selected>19:30</option>
+                  <option>20:00</option>
+                  <option>20:30</option>
+                  <option>21:00</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div class="booking-input-group">
+              <label class="booking-label">Party Size</label>
+              <div class="booking-input-wrap">
+                <select id="diningGuests" class="booking-input">
+                  <option>2 Guests</option>
+                  <option>4 Guests</option>
+                  <option>6 Guests</option>
+                  <option>Private Dining Room (8-12)</option>
+                </select>
+              </div>
+            </div>
+            <div class="booking-input-group">
+              <label class="booking-label">Seating Location</label>
+              <div class="booking-input-wrap">
+                <select class="booking-input">
+                  <option>Cliffside Balcony (Recommended)</option>
+                  <option>Chef's Counter</option>
+                  <option>Indoor Saloon</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="booking-input-group">
+            <label class="booking-label">Special Occasion or Dietary Notes</label>
+            <div class="booking-input-wrap">
+              <input type="text" class="booking-input" placeholder="Anniversary, vegetarian, birthday cake...">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" style="margin-top: 10px;">
+            <i class="fa-solid fa-check"></i> Confirm Table Reservation
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       Modal 4: Spa Appointment Modal
+       ======================================================================== -->
+  <div class="modal-backdrop" id="spaModalBackdrop">
+    <div class="modal-dialog" style="max-width: 580px;">
+      <div class="modal-header">
+        <h3 class="modal-title"><i class="fa-solid fa-spa" style="color: var(--gold-primary); margin-right: 8px;"></i> Book a Thermal Spa Ritual</h3>
+        <button class="modal-close-btn" onclick="HotelUI.closeModal('spaModalBackdrop')"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <form id="spaBookingForm" style="display: flex; flex-direction: column; gap: 16px;">
+          <div class="booking-input-group">
+            <label class="booking-label">Treatment Ritual</label>
+            <div class="booking-input-wrap">
+              <select id="spaTreatmentSelect" class="booking-input">
+                <option value="Imperial 24K Gold Rejuvenation Facial">Imperial 24K Gold Rejuvenation Facial (90 mins)</option>
+                <option value="Himalayan Warm Salt Stone Massage">Himalayan Warm Salt Stone Massage (75 mins)</option>
+                <option value="Oceanic Marine Collagen Detox Wrap">Oceanic Marine Collagen Detox Wrap (90 mins)</option>
+                <option value="Couples Private Hydrotherapy & Massage Ritual">Couples Private Hydrotherapy & Massage (120 mins)</option>
+              </select>
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div class="booking-input-group">
+              <label class="booking-label">Preferred Date</label>
+              <div class="booking-input-wrap">
+                <input type="date" id="spaDate" class="booking-input" required>
+              </div>
+            </div>
+            <div class="booking-input-group">
+              <label class="booking-label">Time Slot</label>
+              <div class="booking-input-wrap">
+                <select id="spaTime" class="booking-input">
+                  <option>10:00 AM</option>
+                  <option>11:30 AM</option>
+                  <option selected>02:00 PM</option>
+                  <option>04:00 PM</option>
+                  <option>06:00 PM</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="booking-input-group">
+            <label class="booking-label">Therapist Preference</label>
+            <div class="booking-input-wrap">
+              <select class="booking-input">
+                <option>No Preference (Senior Master Therapist)</option>
+                <option>Female Therapist</option>
+                <option>Male Therapist</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" style="margin-top: 10px;">
+            <i class="fa-solid fa-check"></i> Book Treatment
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       Modal 5: High-Res Gallery Lightbox
+       ======================================================================== -->
+  <div class="modal-backdrop" id="lightboxModalBackdrop">
+    <div class="modal-dialog" style="max-width: 1000px; background: transparent; border: none; box-shadow: none;">
+      <div style="position: relative;">
+        <button class="modal-close-btn" style="position: absolute; top: 12px; right: 12px; z-index: 10;" onclick="HotelUI.closeModal('lightboxModalBackdrop')">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div style="border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-subtle); max-height: 80vh; background: #000;">
+          <img id="lightboxImage" src="" alt="Gallery Preview" style="width: 100%; height: auto; max-height: 75vh; object-fit: contain;">
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px; background: rgba(9, 13, 20, 0.9); padding: 12px 20px; border-radius: var(--radius-md); border: 1px solid var(--border-glass);">
+          <button class="btn btn-outline-white btn-sm" onclick="HotelUI.prevLightbox()"><i class="fa-solid fa-chevron-left"></i> Previous</button>
+          <span id="lightboxCaption" style="color: var(--gold-light); font-weight: 500;"></span>
+          <button class="btn btn-outline-white btn-sm" onclick="HotelUI.nextLightbox()">Next <i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       Toast Notification System
+       ======================================================================== -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/booking.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/particles.js"></script>
+</body>
+</html>

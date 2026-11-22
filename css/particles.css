@@ -1,0 +1,381 @@
+/* ==========================================================================
+   The Grand Horizon — Particle FX Supporting Styles
+   ========================================================================== */
+
+/* ---- Custom cursor hide on desktop (we have cursor glow aura) ---- */
+@media (pointer: fine) {
+  /* Use a subtle crosshair instead of default arrow to let glow aura shine */
+  body {
+    cursor: none;
+  }
+
+  /* Restore default cursor inside interactive elements so users can still see it */
+  a, button, input, select, textarea, label, [role="button"] {
+    cursor: none;
+  }
+}
+
+/* ---- Cursor glow aura ---- */
+#cursorGlow {
+  mix-blend-mode: screen;
+  transition: width 0.25s ease, height 0.25s ease, opacity 0.3s ease;
+  opacity: 0;
+  animation: cursorFadeIn 1.2s 0.5s forwards ease;
+}
+
+@keyframes cursorFadeIn {
+  to { opacity: 1; }
+}
+
+/* Make glow bigger when hovering interactive elements */
+a:hover ~ #cursorGlow,
+button:hover ~ #cursorGlow {
+  width: 400px;
+  height: 400px;
+}
+
+/* ---- Hero canvas sits at z-index 2, behind overlay (z-index 2) & content (z-index 3) ---- */
+#heroParticleCanvas {
+  mix-blend-mode: screen;
+}
+
+/* ---- Mouse trail canvas ---- */
+#mouseTrailCanvas {
+  pointer-events: none;
+}
+
+/* ---- Confetti / burst canvas ---- */
+#confettiCanvas {
+  pointer-events: none;
+}
+
+/* ---- Firefly canvas positioned correctly within relative sections ---- */
+#amenities,
+#reviews {
+  position: relative;
+  overflow: hidden;
+}
+
+/* ---- Spa section relative for ripple canvas ---- */
+#spa {
+  position: relative;
+  overflow: hidden;
+}
+
+/* ---- Gold snow sections ---- */
+#about,
+#dining {
+  position: relative;
+  overflow: hidden;
+}
+
+/* ---- Shimmer border pulse on section headers when in view ---- */
+.section-tagline {
+  position: relative;
+}
+
+.section-tagline::before,
+.section-tagline::after {
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ---- Particle glow halo on stat numbers ---- */
+.stat-num {
+  position: relative;
+  display: inline-block;
+  animation: statGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes statGlow {
+  0%   { text-shadow: 0 0 10px rgba(212, 175, 55, 0.3); }
+  100% { text-shadow: 0 0 24px rgba(212, 175, 55, 0.7), 0 0 40px rgba(212, 175, 55, 0.3); }
+}
+
+/* ---- Hero content shimmer animation ---- */
+.hero-title {
+  animation: heroFadeUp 1.1s ease both;
+}
+.hero-subtitle {
+  animation: heroFadeUp 1.1s 0.18s ease both;
+}
+.hero-cta-group {
+  animation: heroFadeUp 1.1s 0.32s ease both;
+}
+.hero-highlights-strip {
+  animation: heroFadeUp 1.1s 0.46s ease both;
+}
+.hero-badge-pill {
+  animation: heroFadeUp 1.1s 0.05s ease both;
+}
+
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---- Sparkle hover shimmer on gold elements ---- */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 60%
+  );
+  transform: skewX(-15deg);
+  transition: left 0s;
+  pointer-events: none;
+}
+
+.btn-primary:hover::before {
+  left: 160%;
+  transition: left 0.55s ease;
+}
+
+/* ---- Section divider shimmer line ---- */
+.section-header::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: var(--gold-gradient);
+  margin: 20px auto 0;
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+  animation: dividerPulse 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes dividerPulse {
+  0%   { width: 50px; opacity: 0.6; }
+  100% { width: 100px; opacity: 1; box-shadow: 0 0 20px rgba(212, 175, 55, 0.7); }
+}
+
+/* ---- Gold crest icon shimmer ---- */
+.brand-crest {
+  animation: crestSpin 20s linear infinite;
+}
+
+@keyframes crestSpin {
+  0%   { box-shadow: 0 0 10px rgba(212, 175, 55, 0.3); }
+  25%  { box-shadow: 0 0 20px rgba(212, 175, 55, 0.6); }
+  50%  { box-shadow: 0 0 10px rgba(212, 175, 55, 0.3); }
+  75%  { box-shadow: 0 0 25px rgba(212, 175, 55, 0.7); }
+  100% { box-shadow: 0 0 10px rgba(212, 175, 55, 0.3); }
+}
+
+/* ---- Room card shimmer top border on hover ---- */
+.room-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gold-gradient);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.room-card:hover::after {
+  opacity: 1;
+  animation: shimmerSlide 1.5s ease infinite;
+}
+
+@keyframes shimmerSlide {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ---- Floating badge pill pulse ---- */
+.hero-badge-pill {
+  animation: heroFadeUp 1.1s 0.05s ease both, badgePulse 3s 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes badgePulse {
+  0%   { box-shadow: 0 0 0   rgba(212, 175, 55, 0); }
+  100% { box-shadow: 0 0 22px rgba(212, 175, 55, 0.4); }
+}
+
+/* ---- Dining card subtle left-border glow ---- */
+.signature-dishes-box {
+  animation: leftGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes leftGlow {
+  0%   { border-left-color: rgba(212, 175, 55, 0.5); }
+  100% { border-left-color: rgba(212, 175, 55, 1); box-shadow: -4px 0 14px rgba(212, 175, 55, 0.3); }
+}
+
+/* ---- Offer card top banner flicker ---- */
+.offer-badge {
+  animation: offerBadgeFlicker 4s ease-in-out infinite;
+}
+
+@keyframes offerBadgeFlicker {
+  0%, 94%, 100% { filter: brightness(1); }
+  96% { filter: brightness(1.3); }
+  98% { filter: brightness(0.9); }
+}
+
+/* ---- Review avatar ring pulse ---- */
+.review-avatar {
+  animation: avatarRing 3s ease-in-out infinite alternate;
+}
+
+@keyframes avatarRing {
+  0%   { box-shadow: 0 0 0   rgba(212, 175, 55, 0.4); }
+  100% { box-shadow: 0 0 14px rgba(212, 175, 55, 0.8); }
+}
+
+/* ---- Spa icon box rotation glow ---- */
+.spa-icon-box {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.spa-card:hover .spa-icon-box {
+  transform: rotate(15deg) scale(1.1);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+/* ---- Amenity box shimmer top line animate ---- */
+.amenity-box:hover::before {
+  animation: shimmerSlide 1.5s linear infinite;
+  background-size: 200% auto;
+}
+
+/* ---- Gold gradient text sparkle ---- */
+.gold-gradient-text {
+  background-size: 200% auto;
+  animation: gradientShift 4s linear infinite;
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0%   center; }
+  50%  { background-position: 100% center; }
+  100% { background-position: 0%   center; }
+}
+
+/* ---- Section tagline letter pop ---- */
+.section-tagline {
+  animation: taglineAppear 0.8s ease both;
+}
+
+@keyframes taglineAppear {
+  from { opacity: 0; letter-spacing: 6px; }
+  to   { opacity: 1; letter-spacing: 3px; }
+}
+
+/* ---- Reservation bar entrance ---- */
+.reservation-bar {
+  animation: barSlideUp 0.9s 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes barSlideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---- Toast slide improvement ---- */
+.toast {
+  animation: slideInToast 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards,
+             toastGlow 1.5s 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes toastGlow {
+  0%   { box-shadow: 0 10px 30px rgba(0,0,0,0.7), 0 0 0   rgba(212,175,55,0); }
+  100% { box-shadow: 0 10px 30px rgba(0,0,0,0.7), 0 0 18px rgba(212,175,55,0.3); }
+}
+
+/* ---- Voucher crest icon crown spin + glow ---- */
+.voucher-crest i {
+  display: inline-block;
+  animation: crownFloat 2.5s ease-in-out infinite;
+}
+
+@keyframes crownFloat {
+  0%, 100% { transform: translateY(0)   rotate(-2deg); filter: drop-shadow(0 0 8px  rgba(212,175,55,0.5)); }
+  50%       { transform: translateY(-8px) rotate(2deg);  filter: drop-shadow(0 0 18px rgba(212,175,55,0.9)); }
+}
+
+/* ---- Step circle active pulse ---- */
+.step-indicator.active .step-circle {
+  animation: stepPulse 1.4s ease-in-out infinite;
+}
+
+@keyframes stepPulse {
+  0%, 100% { box-shadow: 0 0 10px rgba(212,175,55,0.4); }
+  50%       { box-shadow: 0 0 25px rgba(212,175,55,0.8), 0 0 40px rgba(212,175,55,0.3); }
+}
+
+/* ---- Promo code chip flicker ---- */
+.promo-code-chip:hover {
+  animation: chipFlicker 0.4s ease;
+  color: #fff;
+  border-color: #fff;
+  background: rgba(212,175,55,0.3);
+}
+
+@keyframes chipFlicker {
+  0%, 100% { filter: brightness(1); }
+  40% { filter: brightness(1.5); }
+  70% { filter: brightness(0.9); }
+}
+
+/* ---- Location distance card slide ---- */
+.dist-card {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+}
+
+.dist-card:hover {
+  transform: translateX(10px);
+  border-color: rgba(212, 175, 55, 0.5);
+  box-shadow: -3px 0 15px rgba(212, 175, 55, 0.2);
+}
+
+/* ---- Gold orb floating decoration (pure CSS fallback for sections without canvas) ---- */
+.section-padding.reviews-section::before {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212,175,55,0.07) 0%, transparent 70%);
+  top: -100px;
+  right: -150px;
+  pointer-events: none;
+  animation: orbDrift 12s ease-in-out infinite alternate;
+}
+
+@keyframes orbDrift {
+  0%   { transform: translate(0, 0)   scale(1);    opacity: 0.7; }
+  100% { transform: translate(-40px, 30px) scale(1.1); opacity: 1; }
+}
+
+/* ---- Hero overlay particle blend ---- */
+.hero-overlay {
+  mix-blend-mode: multiply;
+}
+
+/* ---- Performance: use GPU layers on canvases ---- */
+canvas {
+  will-change: contents;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}

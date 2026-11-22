@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Member Login | The Grand Horizon Resort & Spa</title>
+  <meta name="description" content="Sign in to your Grand Horizon Circle membership account to manage reservations, access exclusive offers, and enjoy personalized butler service.">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23d4af37'><path d='M2 19h20v2H2v-2zM2 5l5 3.5L12 3l5 5.5L22 5v12H2V5z'/></svg>">
+
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* =====================================================
+       CSS Variables — Mirror of main site palette
+       ===================================================== */
+    :root {
+      --gold-primary:  #d4af37;
+      --gold-light:    #e8c94a;
+      --gold-dark:     #b8921f;
+      --gold-muted:    rgba(212, 175, 55, 0.15);
+      --gold-glow:     rgba(212, 175, 55, 0.25);
+
+      --bg-deepest:    #04070d;
+      --bg-dark:       #070d18;
+      --bg-primary:    #090e1a;
+      --bg-card:       rgba(14, 20, 35, 0.95);
+      --bg-glass:      rgba(9, 14, 26, 0.85);
+
+      --border-subtle: rgba(212, 175, 55, 0.18);
+      --border-hover:  rgba(212, 175, 55, 0.5);
+
+      --text-white:    #f8f5ee;
+      --text-muted:    #94a3b8;
+      --text-dim:      #64748b;
+
+      --font-serif:    'Playfair Display', Georgia, serif;
+      --font-sans:     'Inter', system-ui, sans-serif;
+
+      --radius-sm:     6px;
+      --radius-md:     12px;
+      --radius-lg:     20px;
+      --radius-xl:     28px;
+
+      --shadow-gold:   0 0 40px rgba(212, 175, 55, 0.12);
+      --shadow-lg:     0 20px 60px rgba(0, 0, 0, 0.6);
+      --shadow-card:   0 8px 32px rgba(0, 0, 0, 0.5);
+
+      --transition:    all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* =====================================================
+       Reset & Base
+       ===================================================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-deepest);
+      color: var(--text-white);
+      min-height: 100vh;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* =====================================================
+       Animated Background
+       ===================================================== */
+    .login-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 30%, rgba(212, 175, 55, 0.05) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 80% 70%, rgba(14, 40, 80, 0.4) 0%, transparent 60%),
+        linear-gradient(165deg, #04070d 0%, #070d18 40%, #060b15 100%);
+    }
+
+    .login-bg-image {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background-image: url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=2000&q=60');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.08;
+      filter: saturate(0.4) blur(2px);
+    }
+
+    /* Floating orb decorations */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 0;
+      animation: orbDrift 12s ease-in-out infinite alternate;
+    }
+    .orb-1 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(212,175,55,0.07) 0%, transparent 70%);
+      top: -100px; left: -100px;
+      animation-delay: 0s;
+    }
+    .orb-2 {
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, rgba(14,60,120,0.12) 0%, transparent 70%);
+      bottom: -80px; right: -80px;
+      animation-delay: -6s;
+    }
+    .orb-3 {
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(212,175,55,0.05) 0%, transparent 70%);
+      top: 50%; left: 60%;
+      animation-delay: -3s;
+    }
+
+    @keyframes orbDrift {
+      0%   { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(30px, 20px) scale(1.1); }
+    }
+
+    /* =====================================================
+       Top Bar
+       ===================================================== */
+    .top-bar {
+      position: relative;
+      z-index: 10;
+      background: rgba(4, 7, 13, 0.9);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 8px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      backdrop-filter: blur(12px);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .top-bar a {
+      color: var(--gold-primary);
+      text-decoration: none;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .top-bar a:hover { color: var(--gold-light); }
+    .top-bar-left { display: flex; align-items: center; gap: 6px; }
+
+    /* =====================================================
+       Main Layout
+       ===================================================== */
+    .login-wrapper {
+      position: relative;
+      z-index: 2;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 20px;
+      min-height: calc(100vh - 100px);
+    }
+
+    .login-grid {
+      display: grid;
+      grid-template-columns: 1fr 480px;
+      gap: 0;
+      width: 100%;
+      max-width: 1000px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg), var(--shadow-gold);
+    }
+
+    /* =====================================================
+       Left Panel — Brand & Benefits
+       ===================================================== */
+    .login-left {
+      position: relative;
+      padding: 56px 48px;
+      background:
+        linear-gradient(160deg, rgba(212,175,55,0.08) 0%, rgba(14,20,35,0.6) 60%),
+        url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=900&q=70') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    .login-left::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(4,7,13,0.55) 0%, rgba(4,7,13,0.75) 100%);
+    }
+
+    .login-left > * { position: relative; z-index: 1; }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+    .brand-crest {
+      width: 46px; height: 46px;
+      background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 1.1rem;
+      color: #fff;
+      flex-shrink: 0;
+      box-shadow: 0 0 20px var(--gold-glow);
+    }
+    .brand-title {
+      display: block;
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--text-white);
+      line-height: 1.1;
+    }
+    .brand-subtitle {
+      display: block;
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      color: var(--gold-primary);
+      margin-top: 2px;
+    }
+
+    .login-left-content { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 32px 0; }
+
+    .left-tagline {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .left-tagline::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--gold-primary);
+    }
+
+    .left-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 600;
+      line-height: 1.25;
+      color: var(--text-white);
+      margin-bottom: 20px;
+    }
+    .left-title span {
+      background: linear-gradient(135deg, var(--gold-primary), var(--gold-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .left-desc {
+      font-size: 0.88rem;
+      color: rgba(248, 245, 238, 0.65);
+      line-height: 1.75;
+      margin-bottom: 32px;
+    }
+
+    .perks-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .perks-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.84rem;
+      color: rgba(248, 245, 238, 0.75);
+      line-height: 1.5;
+    }
+    .perks-list li .perk-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--gold-muted);
+      border: 1px solid var(--border-subtle);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      font-size: 0.7rem;
+      color: var(--gold-primary);
+      margin-top: 1px;
+    }
+
+    .login-left-quote {
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
+      padding-top: 24px;
+    }
+    .quote-text {
+      font-family: var(--font-serif);
+      font-size: 0.92rem;
+      font-style: italic;
+      color: rgba(248, 245, 238, 0.6);
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+    .quote-author {
+      font-size: 0.72rem;
+      color: var(--gold-primary);
+      letter-spacing: 0.08em;
+    }
+
+    /* =====================================================
+       Right Panel — Login Form
+       ===================================================== */
+    .login-right {
+      padding: 56px 48px;
+      background: var(--bg-card);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .login-form-header { margin-bottom: 32px; }
+    .login-form-title {
+      font-family: var(--font-serif);
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: var(--text-white);
+      margin-bottom: 8px;
+    }
+    .login-form-subtitle {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Gold divider */
+    .gold-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 24px 0;
+    }
+    .gold-divider::before,
+    .gold-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--border-subtle));
+    }
+    .gold-divider::after { background: linear-gradient(to left, transparent, var(--border-subtle)); }
+    .gold-divider span { font-size: 0.7rem; color: var(--text-dim); letter-spacing: 0.1em; white-space: nowrap; }
+
+    /* Form Fields */
+    .form-group { margin-bottom: 20px; }
+
+    .form-label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .input-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .input-icon {
+      position: absolute;
+      left: 14px;
+      color: var(--text-dim);
+      font-size: 0.85rem;
+      transition: var(--transition);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 13px 14px 13px 40px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      color: var(--text-white);
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      transition: var(--transition);
+      outline: none;
+    }
+    .form-input::placeholder { color: var(--text-dim); }
+
+    .form-input:focus {
+      border-color: var(--gold-primary);
+      background: rgba(212, 175, 55, 0.04);
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.08);
+    }
+    .form-input:focus + .input-icon,
+    .input-wrap:focus-within .input-icon { color: var(--gold-primary); }
+
+    /* Password toggle */
+    .password-toggle {
+      position: absolute;
+      right: 14px;
+      background: none;
+      border: none;
+      color: var(--text-dim);
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: var(--transition);
+      padding: 4px;
+      z-index: 1;
+    }
+    .password-toggle:hover { color: var(--gold-primary); }
+
+    /* Remember & Forgot */
+    .form-options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+    .remember-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+    .custom-checkbox {
+      width: 16px;
+      height: 16px;
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      background: rgba(255,255,255,0.03);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: var(--transition);
+      flex-shrink: 0;
+    }
+    .custom-checkbox.checked {
+      background: var(--gold-primary);
+      border-color: var(--gold-primary);
+    }
+    .custom-checkbox.checked::after {
+      content: '';
+      width: 8px;
+      height: 5px;
+      border-left: 1.5px solid #fff;
+      border-bottom: 1.5px solid #fff;
+      transform: rotate(-45deg) translateY(-1px);
+      display: block;
+    }
+    .remember-label { font-size: 0.8rem; color: var(--text-muted); cursor: pointer; user-select: none; }
+
+    .forgot-link {
+      font-size: 0.8rem;
+      color: var(--gold-primary);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    .forgot-link:hover { color: var(--gold-light); text-decoration: underline; }
+
+    /* Submit Button */
+    .btn-login {
+      width: 100%;
+      padding: 14px 24px;
+      background: linear-gradient(135deg, var(--gold-primary) 0%, var(--gold-dark) 100%);
+      border: none;
+      border-radius: var(--radius-md);
+      color: #07090f;
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-login::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
+      opacity: 0;
+      transition: var(--transition);
+    }
+    .btn-login:hover::before { opacity: 1; }
+    .btn-login:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(212,175,55,0.3); }
+    .btn-login:active { transform: translateY(0); }
+    .btn-login span, .btn-login i { position: relative; z-index: 1; }
+
+    /* Social Login */
+    .social-login-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .btn-social {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 16px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      color: var(--text-muted);
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    .btn-social:hover {
+      border-color: var(--border-hover);
+      background: rgba(255,255,255,0.06);
+      color: var(--text-white);
+    }
+    .btn-social i { font-size: 0.95rem; }
+    .btn-social .google-g { color: #ea4335; }
+    .btn-social .apple-icon { color: var(--text-white); }
+
+    /* Register Link */
+    .register-link-row {
+      text-align: center;
+      margin-top: 28px;
+      font-size: 0.82rem;
+      color: var(--text-dim);
+    }
+    .register-link-row a {
+      color: var(--gold-primary);
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    .register-link-row a:hover { color: var(--gold-light); }
+
+    /* Success / Error Message */
+    .form-message {
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem;
+      margin-bottom: 20px;
+      display: none;
+      align-items: center;
+      gap: 10px;
+    }
+    .form-message.success {
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      color: #4ade80;
+      display: flex;
+    }
+    .form-message.error {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #f87171;
+      display: flex;
+    }
+
+    /* Loading spinner */
+    .spinner {
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(7, 9, 15, 0.3);
+      border-top-color: #07090f;
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+      display: none;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* =====================================================
+       Footer
+       ===================================================== */
+    .login-footer {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 20px 24px;
+      border-top: 1px solid var(--border-subtle);
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      background: rgba(4, 7, 13, 0.6);
+      backdrop-filter: blur(8px);
+    }
+    .login-footer a { color: var(--text-dim); text-decoration: none; transition: var(--transition); }
+    .login-footer a:hover { color: var(--gold-primary); }
+    .login-footer-links { display: flex; justify-content: center; gap: 20px; margin-top: 6px; flex-wrap: wrap; }
+
+    /* =====================================================
+       Responsive
+       ===================================================== */
+    @media (max-width: 860px) {
+      .login-grid { grid-template-columns: 1fr; max-width: 480px; }
+      .login-left { display: none; }
+      .login-right { padding: 40px 32px; }
+    }
+
+    @media (max-width: 480px) {
+      .login-right { padding: 32px 24px; }
+      .social-login-grid { grid-template-columns: 1fr; }
+    }
+
+    /* =====================================================
+       Entrance Animation
+       ===================================================== */
+    .login-grid {
+      animation: fadeSlideUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background layers -->
+  <div class="login-bg"></div>
+  <div class="login-bg-image"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <!-- ======================================================
+       Top Utility Bar
+       ====================================================== -->
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <i class="fa-solid fa-award" style="color: var(--gold-primary);"></i>
+      <span>Forbes Travel Guide 5-Star Winner 2026 &bull; Ravello, Amalfi Coast, Italy</span>
+    </div>
+    <a href="index.html">
+      <i class="fa-solid fa-arrow-left"></i>
+      Back to Resort Homepage
+    </a>
+  </div>
+
+  <!-- ======================================================
+       Main Login Area
+       ====================================================== -->
+  <div class="login-wrapper">
+    <div class="login-grid">
+
+      <!-- Left Panel: Brand & Benefits -->
+      <div class="login-left">
+        <a href="index.html" class="brand-logo">
+          <div class="brand-crest"><i class="fa-solid fa-crown"></i></div>
+          <div>
+            <span class="brand-title">THE GRAND HORIZON</span>
+            <span class="brand-subtitle">RESORT &bull; SPA &bull; SANCTUARY</span>
+          </div>
+        </a>
+
+        <div class="login-left-content">
+          <div class="left-tagline">Horizon Circle Membership</div>
+          <h2 class="left-title">
+            Your Private Portal<br>
+            to <span>Timeless Luxury</span>
+          </h2>
+          <p class="left-desc">
+            Sign in to access your curated member benefits, review past stays, manage upcoming reservations, and unlock your exclusive VIP concierge line.
+          </p>
+
+          <ul class="perks-list">
+            <li>
+              <span class="perk-icon"><i class="fa-solid fa-calendar-check"></i></span>
+              <span><strong style="color: var(--text-white);">Manage Reservations</strong> — View, modify, or cancel bookings at any time with zero fees</span>
+            </li>
+            <li>
+              <span class="perk-icon"><i class="fa-solid fa-gem"></i></span>
+              <span><strong style="color: var(--text-white);">Exclusive Member Rates</strong> — Up to 20% off suite rates and complimentary add-ons</span>
+            </li>
+            <li>
+              <span class="perk-icon"><i class="fa-solid fa-bell-concierge"></i></span>
+              <span><strong style="color: var(--text-white);">Priority Butler Access</strong> — Direct private line to your dedicated royal butler</span>
+            </li>
+            <li>
+              <span class="perk-icon"><i class="fa-solid fa-award"></i></span>
+              <span><strong style="color: var(--text-white);">Horizon Points</strong> — Earn and redeem luxury credits across all resort services</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="login-left-quote">
+          <p class="quote-text">"The most breathtaking hotel panorama on earth. Every return feels like coming home to a palace."</p>
+          <div class="quote-author">&mdash; Architectural Digest, Travel Edition 2026</div>
+        </div>
+      </div>
+
+      <!-- Right Panel: Login Form -->
+      <div class="login-right">
+        <div class="login-form-header">
+          <h1 class="login-form-title">Welcome Back</h1>
+          <p class="login-form-subtitle">Sign in to your Horizon Circle account to continue your luxury journey.</p>
+        </div>
+
+        <!-- Status Message -->
+        <div class="form-message" id="formMessage">
+          <i class="fa-solid fa-circle-check"></i>
+          <span id="formMessageText"></span>
+        </div>
+
+        <!-- Login Form -->
+        <form id="loginForm" autocomplete="on" novalidate>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label class="form-label" for="loginEmail">Email Address</label>
+            <div class="input-wrap">
+              <input
+                type="email"
+                id="loginEmail"
+                class="form-input"
+                placeholder="guest@luxury.com"
+                autocomplete="email"
+                required
+              >
+              <i class="fa-solid fa-envelope input-icon"></i>
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="form-group">
+            <label class="form-label" for="loginPassword">Password</label>
+            <div class="input-wrap">
+              <input
+                type="password"
+                id="loginPassword"
+                class="form-input"
+                placeholder="Enter your password"
+                autocomplete="current-password"
+                required
+              >
+              <i class="fa-solid fa-lock input-icon"></i>
+              <button type="button" class="password-toggle" id="passwordToggle" aria-label="Toggle password visibility">
+                <i class="fa-solid fa-eye" id="passwordToggleIcon"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Remember & Forgot -->
+          <div class="form-options">
+            <label class="remember-wrap" onclick="toggleRemember()">
+              <div class="custom-checkbox" id="rememberBox"></div>
+              <span class="remember-label">Remember me for 30 days</span>
+            </label>
+            <a href="#" class="forgot-link" onclick="handleForgotPassword(event)">Forgot password?</a>
+          </div>
+
+          <!-- Submit -->
+          <button type="submit" class="btn-login" id="loginBtn">
+            <div class="spinner" id="loginSpinner"></div>
+            <i class="fa-solid fa-right-to-bracket" id="loginBtnIcon"></i>
+            <span id="loginBtnText">Sign In to My Account</span>
+          </button>
+        </form>
+
+        <!-- Divider -->
+        <div class="gold-divider"><span>or continue with</span></div>
+
+        <!-- Social Login -->
+        <div class="social-login-grid">
+          <a href="#" class="btn-social" onclick="handleSocialLogin(event, 'Google')">
+            <i class="fa-brands fa-google google-g"></i>
+            <span>Google</span>
+          </a>
+          <a href="#" class="btn-social" onclick="handleSocialLogin(event, 'Apple')">
+            <i class="fa-brands fa-apple apple-icon"></i>
+            <span>Apple</span>
+          </a>
+        </div>
+
+        <!-- Register -->
+        <div class="register-link-row">
+          Not yet a Horizon Circle member?
+          <a href="register.html" id="registerLink">Join the VIP Circle &rarr;</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ======================================================
+       Footer
+       ====================================================== -->
+  <footer class="login-footer">
+    <div>&copy; 2026 The Grand Horizon Luxury Resort &amp; Spa. All rights reserved.</div>
+    <div class="login-footer-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Cookie Settings</a>
+      <a href="index.html#contact">Contact Concierge</a>
+    </div>
+  </footer>
+
+  <!-- ======================================================
+       JavaScript
+       ====================================================== -->
+  <script>
+    'use strict';
+
+    /* -------------------------------------------------------
+       Password visibility toggle
+    ------------------------------------------------------- */
+    const passwordToggle = document.getElementById('passwordToggle');
+    const passwordInput  = document.getElementById('loginPassword');
+    const toggleIcon     = document.getElementById('passwordToggleIcon');
+
+    passwordToggle.addEventListener('click', () => {
+      const isHidden = passwordInput.type === 'password';
+      passwordInput.type = isHidden ? 'text' : 'password';
+      toggleIcon.className = isHidden ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye';
+    });
+
+    /* -------------------------------------------------------
+       Remember me checkbox
+    ------------------------------------------------------- */
+    const rememberBox = document.getElementById('rememberBox');
+    let isRemembered = false;
+
+    function toggleRemember() {
+      isRemembered = !isRemembered;
+      rememberBox.classList.toggle('checked', isRemembered);
+    }
+
+    /* -------------------------------------------------------
+       Show form message
+    ------------------------------------------------------- */
+    function showMessage(type, text) {
+      const msg  = document.getElementById('formMessage');
+      const span = document.getElementById('formMessageText');
+      const icon = msg.querySelector('i');
+
+      msg.className = `form-message ${type}`;
+      icon.className = type === 'success'
+        ? 'fa-solid fa-circle-check'
+        : 'fa-solid fa-circle-exclamation';
+      span.textContent = text;
+    }
+
+    function hideMessage() {
+      document.getElementById('formMessage').className = 'form-message';
+    }
+
+    /* -------------------------------------------------------
+       Forgot password handler
+    ------------------------------------------------------- */
+    function handleForgotPassword(e) {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value.trim();
+      if (email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showMessage('success', `A password reset link has been sent to ${email}. Please check your inbox.`);
+      } else {
+        showMessage('error', 'Please enter your registered email address first, then click "Forgot password?".');
+        document.getElementById('loginEmail').focus();
+      }
+    }
+
+    /* -------------------------------------------------------
+       Social login handler (demo)
+    ------------------------------------------------------- */
+    function handleSocialLogin(e, provider) {
+      e.preventDefault();
+      showMessage('success', `Redirecting to ${provider} authentication… (Demo mode)`);
+    }
+
+    /* -------------------------------------------------------
+       Main Login Form Submit
+    ------------------------------------------------------- */
+    document.getElementById('loginForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      hideMessage();
+
+      const email    = document.getElementById('loginEmail').value.trim();
+      const password = document.getElementById('loginPassword').value;
+
+      // Basic validation
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showMessage('error', 'Please enter a valid email address.');
+        document.getElementById('loginEmail').focus();
+        return;
+      }
+      if (!password || password.length < 6) {
+        showMessage('error', 'Password must be at least 6 characters.');
+        document.getElementById('loginPassword').focus();
+        return;
+      }
+
+      // Show loading state
+      const btn      = document.getElementById('loginBtn');
+      const spinner  = document.getElementById('loginSpinner');
+      const icon     = document.getElementById('loginBtnIcon');
+      const btnText  = document.getElementById('loginBtnText');
+
+      btn.disabled   = true;
+      spinner.style.display = 'block';
+      icon.style.display    = 'none';
+      btnText.textContent   = 'Authenticating…';
+
+      // Simulate async authentication (replace with real API call)
+      await new Promise(r => setTimeout(r, 1800));
+
+      // --- DEMO LOGIC ---
+      // In production: replace with fetch('/api/auth/login', { method:'POST', body: JSON.stringify({email, password}) })
+      const DEMO_EMAIL    = 'guest@luxury.com';
+      const DEMO_PASSWORD = 'horizon2026';
+
+      if (email === DEMO_EMAIL && password === DEMO_PASSWORD) {
+        spinner.style.display = 'none';
+        icon.style.display    = 'inline';
+        icon.className        = 'fa-solid fa-circle-check';
+        btnText.textContent   = 'Signed In Successfully!';
+
+        showMessage('success', `Welcome back! Redirecting to your member dashboard…`);
+
+        // Redirect after short delay
+        setTimeout(() => { window.location.href = 'index.html'; }, 1800);
+      } else {
+        // Reset button
+        btn.disabled          = false;
+        spinner.style.display = 'none';
+        icon.style.display    = 'inline';
+        icon.className        = 'fa-solid fa-right-to-bracket';
+        btnText.textContent   = 'Sign In to My Account';
+
+        showMessage('error', 'Invalid email or password. Demo credentials: guest@luxury.com / horizon2026');
+        document.getElementById('loginPassword').value = '';
+        document.getElementById('loginPassword').focus();
+      }
+    });
+
+    /* -------------------------------------------------------
+       Prefill demo hint on focus (optional UX helper)
+    ------------------------------------------------------- */
+    document.getElementById('loginEmail').addEventListener('focus', function() {
+      if (!this.value) this.placeholder = 'Try: guest@luxury.com';
+    });
+    document.getElementById('loginPassword').addEventListener('focus', function() {
+      if (!this.value) this.placeholder = 'Try: horizon2026';
+    });
+  </script>
+
+</body>
+</html>
